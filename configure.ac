@@ -125,7 +125,7 @@ if test "$opt_bash_malloc" = yes; then
 	MALLOC_LDFLAGS='-L$(ALLOC_LIBDIR)'
 	MALLOC_DEP='$(MALLOC_LIBRARY)'
 
-	AC_DEFINE(USING_BASH_MALLOC)
+	AC_DEFINE(USING_BASH_MALLOC,,[description])
 else
 	MALLOC_LIB=
 	MALLOC_LIBRARY=
@@ -135,7 +135,7 @@ fi
 
 if test "$opt_purify" = yes; then
 	PURIFY="purify "
-	AC_DEFINE(DISABLE_MALLOC_WRAPPERS)
+	AC_DEFINE(DISABLE_MALLOC_WRAPPERS,,[description])
 else
 	PURIFY=
 fi
@@ -145,7 +145,7 @@ if test "$opt_purecov" = yes; then
 fi
 
 if test "$opt_afs" = yes; then
-	AC_DEFINE(AFS)
+	AC_DEFINE(AFS,,[desc])
 fi
 
 if test "$opt_curses" = yes; then
@@ -270,96 +270,96 @@ dnl to be run before we can check the version of an already-installed readline
 dnl library
 
 if test $opt_alias = yes; then
-AC_DEFINE(ALIAS)
+AC_DEFINE(ALIAS,,[description])
 fi
 if test $opt_dirstack = yes; then
-AC_DEFINE(PUSHD_AND_POPD)
+AC_DEFINE(PUSHD_AND_POPD,,[description])
 fi
 if test $opt_restricted = yes; then
-AC_DEFINE(RESTRICTED_SHELL)
+AC_DEFINE(RESTRICTED_SHELL,,[description])
 fi
 if test $opt_process_subst = yes; then
-AC_DEFINE(PROCESS_SUBSTITUTION)
+AC_DEFINE(PROCESS_SUBSTITUTION,,[description])
 fi
 if test $opt_prompt_decoding = yes; then
-AC_DEFINE(PROMPT_STRING_DECODE)
+AC_DEFINE(PROMPT_STRING_DECODE,,[description])
 fi
 if test $opt_select = yes; then
-AC_DEFINE(SELECT_COMMAND)
+AC_DEFINE(SELECT_COMMAND,,[description])
 fi
 if test $opt_help = yes; then
-AC_DEFINE(HELP_BUILTIN)
+AC_DEFINE(HELP_BUILTIN,,[description])
 fi
 if test $opt_array_variables = yes; then
-AC_DEFINE(ARRAY_VARS)
+AC_DEFINE(ARRAY_VARS,,[description])
 fi
 if test $opt_dparen_arith = yes; then
-AC_DEFINE(DPAREN_ARITHMETIC)
+AC_DEFINE(DPAREN_ARITHMETIC,,[description])
 fi
 if test $opt_brace_expansion = yes; then
-AC_DEFINE(BRACE_EXPANSION)
+AC_DEFINE(BRACE_EXPANSION,,[description])
 fi
 if test $opt_disabled_builtins = yes; then
-AC_DEFINE(DISABLED_BUILTINS)
+AC_DEFINE(DISABLED_BUILTINS,,[description])
 fi
 if test $opt_command_timing = yes; then
-AC_DEFINE(COMMAND_TIMING)
+AC_DEFINE(COMMAND_TIMING,,[description])
 fi
 if test $opt_xpg_echo = yes ; then
-AC_DEFINE(DEFAULT_ECHO_TO_XPG)
+AC_DEFINE(DEFAULT_ECHO_TO_XPG,,[description])
 fi
 if test $opt_strict_posix = yes; then
-AC_DEFINE(STRICT_POSIX)
+AC_DEFINE(STRICT_POSIX,,[description])
 fi
 if test $opt_extended_glob = yes ; then
-AC_DEFINE(EXTENDED_GLOB)
+AC_DEFINE(EXTENDED_GLOB,,[description])
 fi
 if test $opt_extglob_default = yes; then
-AC_DEFINE(EXTGLOB_DEFAULT, 1)
+AC_DEFINE(EXTGLOB_DEFAULT, 1, [description])
 else
-AC_DEFINE(EXTGLOB_DEFAULT, 0)
+AC_DEFINE(EXTGLOB_DEFAULT, 0, [description])
 fi
 if test $opt_cond_command = yes ; then
-AC_DEFINE(COND_COMMAND)
+AC_DEFINE(COND_COMMAND,,[description])
 fi
 if test $opt_cond_regexp = yes ; then
-AC_DEFINE(COND_REGEXP)
+AC_DEFINE(COND_REGEXP,,[description])
 fi
 if test $opt_coproc = yes; then
-AC_DEFINE(COPROCESS_SUPPORT)
+AC_DEFINE(COPROCESS_SUPPORT,,[description])
 fi
 if test $opt_arith_for_command = yes; then
-AC_DEFINE(ARITH_FOR_COMMAND)
+AC_DEFINE(ARITH_FOR_COMMAND,,[description])
 fi
 if test $opt_net_redirs = yes; then
-AC_DEFINE(NETWORK_REDIRECTIONS)
+AC_DEFINE(NETWORK_REDIRECTIONS,,[description])
 fi
 if test $opt_progcomp = yes; then
-AC_DEFINE(PROGRAMMABLE_COMPLETION)
+AC_DEFINE(PROGRAMMABLE_COMPLETION,,[description])
 fi
 if test $opt_multibyte = no; then
-AC_DEFINE(NO_MULTIBYTE_SUPPORT)
+AC_DEFINE(NO_MULTIBYTE_SUPPORT,,[description])
 fi
 if test $opt_debugger = yes; then
-AC_DEFINE(DEBUGGER)
+AC_DEFINE(DEBUGGER,,[description])
 fi
 if test $opt_casemod_attrs = yes; then
-AC_DEFINE(CASEMOD_ATTRS)
+AC_DEFINE(CASEMOD_ATTRS,,[description])
 fi
 if test $opt_casemod_expansions = yes; then
-AC_DEFINE(CASEMOD_EXPANSIONS)
+AC_DEFINE(CASEMOD_EXPANSIONS,,[description])
 fi
 if test $opt_dircomplete_expand_default = yes; then
-AC_DEFINE(DIRCOMPLETE_EXPAND_DEFAULT)
+AC_DEFINE(DIRCOMPLETE_EXPAND_DEFAULT,,[description])
 fi
 if test $opt_globascii_default = yes; then
-AC_DEFINE(GLOBASCII_DEFAULT, 1)
+AC_DEFINE(GLOBASCII_DEFAULT, 1, [description])
 else
-AC_DEFINE(GLOBASCII_DEFAULT, 0)
+AC_DEFINE(GLOBASCII_DEFAULT, 0, [description])
 fi
 
 if test $opt_memscramble = yes; then
-AC_DEFINE(MEMSCRAMBLE)
+AC_DEFINE(MEMSCRAMBLE,,[description])
 fi
 
 if test "$opt_minimal_config" = yes; then
@@ -553,7 +553,7 @@ fi
 
 TILDE_LIB=-ltilde
 if test $opt_readline = yes; then
-	AC_DEFINE(READLINE)
+	AC_DEFINE(READLINE,,[description])
 	if test "$opt_with_installed_readline" != "no" ; then
 		case "$opt_with_installed_readline" in
 		yes)	RL_INCLUDE= ;;
@@ -588,10 +588,10 @@ else
 fi
 if test $opt_history = yes || test $opt_bang_history = yes; then
 	if test $opt_history = yes; then
-		AC_DEFINE(HISTORY)
+		AC_DEFINE(HISTORY,,[description])
 	fi
 	if test $opt_bang_history = yes; then
-		AC_DEFINE(BANG_HISTORY)
+		AC_DEFINE(BANG_HISTORY,,[description])
 	fi
  	if test "$opt_with_installed_readline" != "no"; then
 		HIST_LIBDIR=$RL_LIBDIR
@@ -680,7 +680,7 @@ m4_include([m4/stat-time.m4])
 m4_include([m4/timespec.m4])
 
 dnl Turn on any extensions available in the GNU C library.
-AC_DEFINE(_GNU_SOURCE, 1)
+AC_DEFINE(_GNU_SOURCE, 1, [description])
 
 dnl C compiler characteristics
 AC_C_CONST
@@ -704,7 +704,7 @@ BASH_HEADER_INTTYPES
 
 AC_CHECK_HEADERS(unistd.h stdlib.h stdarg.h varargs.h limits.h string.h \
 		 memory.h locale.h termcap.h termio.h termios.h dlfcn.h \
-		 stdbool.h stddef.h stdint.h netdb.h pwd.h grp.h strings.h \
+		 stdbool.h stddef.h stdint.h netdb.h pwd.h strings.h \
 		 regex.h syslog.h ulimit.h)
 AC_CHECK_HEADERS(sys/pte.h sys/stream.h sys/select.h sys/file.h \
 		 sys/resource.h sys/param.h sys/socket.h sys/stat.h \
@@ -721,7 +721,7 @@ AC_CHECK_HEADER(sys/ptem.h, , ,[[
 
 dnl special checks for libc functions
 AC_FUNC_ALLOCA
-AC_FUNC_GETPGRP
+dnl AC_FUNC_GETPGRP
 AC_FUNC_SETVBUF_REVERSED
 AC_FUNC_VPRINTF
 AC_FUNC_STRCOLL
@@ -745,7 +745,7 @@ if test "$ac_cv_func_vprintf" = no; then
     AC_EGREP_HEADER([[int[ 	]*vprintf[^a-zA-Z0-9]]],stdio.h,ac_cv_func_vprintf=yes)
     AC_MSG_RESULT($ac_cv_func_vprintf)
     if test $ac_cv_func_vprintf = yes; then
-	AC_DEFINE(HAVE_VPRINTF)
+	AC_DEFINE(HAVE_VPRINTF,,[description])
     fi
 fi
 
@@ -757,11 +757,12 @@ dnl signal stuff
 AC_TYPE_SIGNAL
 
 dnl checks for certain version-specific system calls and libc functions
-AC_CHECK_FUNC(__setostype, AC_DEFINE(HAVE_SETOSTYPE))
-AC_CHECK_FUNC(wait3, AC_DEFINE(HAVE_WAIT3))
+AC_CHECK_FUNC(__setostype, AC_DEFINE(HAVE_SETOSTYPE,,[description]))
+AC_CHECK_FUNC(wait3, AC_DEFINE(HAVE_WAIT3,,[description]))
 
 dnl checks for missing libc functions
-AC_CHECK_FUNC(mkfifo,AC_DEFINE(HAVE_MKFIFO),AC_DEFINE(MKFIFO_MISSING))
+dnl AC_CHECK_FUNC(mkfifo,AC_DEFINE(HAVE_MKFIFO,,[description]),AC_DEFINE(MKFIFO_MISSING,,[description]))
+AC_DEFINE(HAVE_MKFIFO,,[description])
 
 dnl checks for system calls
 AC_CHECK_FUNCS(dup2 eaccess fcntl getdtablesize getgroups gethostname \
@@ -809,7 +810,7 @@ AC_CHECK_DECLS([strtold], [
     )
     AC_MSG_RESULT($bash_cv_strtold_broken)
     if test "$bash_cv_strtold_broken" = "yes" ; then
-	AC_DEFINE(STRTOLD_BROKEN)
+	AC_DEFINE(STRTOLD_BROKEN,,[description])
     fi
 ])
 
@@ -920,7 +921,7 @@ AC_HEADER_STAT
 dnl system services
 AC_SYS_INTERPRETER
 if test $ac_cv_sys_interpreter = yes; then
-AC_DEFINE(HAVE_HASH_BANG_EXEC)
+AC_DEFINE(HAVE_HASH_BANG_EXEC,,[description])
 fi
 
 dnl Miscellaneous Bash tests
@@ -944,7 +945,7 @@ BASH_TYPE_SIGHANDLER
 BASH_CHECK_TYPE(clock_t, [#include <sys/times.h>], long)
 BASH_CHECK_TYPE(sigset_t, [#include <signal.h>], int)
 BASH_CHECK_TYPE(sig_atomic_t, [#include <signal.h>], int)
-BASH_CHECK_TYPE(quad_t, , long, HAVE_QUAD_T)
+dnl BASH_CHECK_TYPE(quad_t, , long, HAVE_QUAD_T)
 BASH_CHECK_TYPE(intmax_t, , $bash_cv_type_long_long)
 BASH_CHECK_TYPE(uintmax_t, , $bash_cv_type_unsigned_long_long)
 if test "$ac_cv_header_sys_socket_h" = "yes"; then
@@ -992,12 +993,12 @@ dnl prototype and declaration in lib/sh/getenv.c will be standard-conformant
 if test "$ac_cv_func_putenv" = "yes"; then
 BASH_FUNC_STD_PUTENV
 else
-AC_DEFINE(HAVE_STD_PUTENV)
+AC_DEFINE(HAVE_STD_PUTENV,,[description])
 fi
 if test "$ac_cv_func_unsetenv" = "yes"; then
 BASH_FUNC_STD_UNSETENV
 else
-AC_DEFINE(HAVE_STD_UNSETENV)
+AC_DEFINE(HAVE_STD_UNSETENV,,[description])
 fi
 
 BASH_FUNC_PRINTF_A_FORMAT
@@ -1044,7 +1045,7 @@ if test "$bash_cv_job_control_missing" = missing; then
 fi
 
 if test "$opt_job_control" = yes; then
-AC_DEFINE(JOB_CONTROL)
+AC_DEFINE(JOB_CONTROL,,[description])
 JOBS_O=jobs.o
 else
 JOBS_O=nojobs.o
@@ -1063,10 +1064,10 @@ dnl
 dnl this should really go away someday
 
 case "${host_os}" in
-sysv4.2*)	AC_DEFINE(SVR4_2)
-		AC_DEFINE(SVR4) ;;
-sysv4*)		AC_DEFINE(SVR4) ;;
-sysv5*)		AC_DEFINE(SVR5) ;;
+sysv4.2*)	AC_DEFINE(SVR4_2,,[description])
+		AC_DEFINE(SVR4,,[description]) ;;
+sysv4*)		AC_DEFINE(SVR4,,[description]) ;;
+sysv5*)		AC_DEFINE(SVR5,,[description]) ;;
 hpux9*)		LOCAL_CFLAGS="-DHPUX9 -DHPUX" ;;
 hpux*)		LOCAL_CFLAGS=-DHPUX ;;
 dgux*)		LOCAL_CFLAGS=-D_DGUX_SOURCE; LOCAL_LIBS=-ldgc ;;
@@ -1085,7 +1086,7 @@ solaris2*)	LOCAL_CFLAGS=-DSOLARIS ;;
 lynxos*)	LOCAL_CFLAGS=-DRECYCLES_PIDS ;;
 linux*)		LOCAL_LDFLAGS=-rdynamic		 # allow dynamic loading
 		case "`uname -r`" in
-		2.[[456789]]*|3*)	AC_DEFINE(PGRP_PIPE) ;;
+		2.[[456789]]*|3*)	AC_DEFINE(PGRP_PIPE,,[description]) ;;
 		esac ;;
 *qnx6*)		LOCAL_CFLAGS="-Dqnx -Dqnx6" LOCAL_LIBS="-lncurses" ;;
 *qnx*)		LOCAL_CFLAGS="-Dqnx -F -3s" LOCAL_LDFLAGS="-3s" LOCAL_LIBS="-lunix -lncurses" ;;

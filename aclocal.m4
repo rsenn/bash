@@ -87,10 +87,10 @@ $2
 ], bash_cv_type_$1=yes, bash_cv_type_$1=no)])
 AC_MSG_RESULT($bash_cv_type_$1)
 ifelse($#, 4, [if test $bash_cv_type_$1 = yes; then
-	AC_DEFINE($4)
+	AC_DEFINE($4,,[Define this if you have the type '$1'])
 	fi])
 if test $bash_cv_type_$1 = no; then
-  AC_DEFINE_UNQUOTED($1, $3)
+  AC_DEFINE_UNQUOTED($1, $3,[Define for missing type])
 fi
 ])
 
@@ -146,7 +146,7 @@ exit(pf == 0);
 )])
 AC_MSG_RESULT($bash_cv_printf_declared)
 if test $bash_cv_printf_declared = yes; then
-AC_DEFINE(PRINTF_DECLARED)
+AC_DEFINE(PRINTF_DECLARED,,[description])
 fi
 ])
 
@@ -157,7 +157,7 @@ AC_CACHE_VAL(bash_cv_sbrk_declared,
  bash_cv_sbrk_declared=yes, bash_cv_sbrk_declared=no)])
 AC_MSG_RESULT($bash_cv_sbrk_declared)
 if test $bash_cv_sbrk_declared = yes; then
-AC_DEFINE(SBRK_DECLARED)
+AC_DEFINE(SBRK_DECLARED,,[description])
 fi
 ])
 
@@ -177,7 +177,7 @@ AC_CACHE_VAL(bash_cv_decl_under_sys_siglist,
   [AC_MSG_WARN(cannot check for _sys_siglist[] if cross compiling -- defaulting to no)])])dnl
 AC_MSG_RESULT($bash_cv_decl_under_sys_siglist)
 if test $bash_cv_decl_under_sys_siglist = yes; then
-AC_DEFINE(UNDER_SYS_SIGLIST_DECLARED)
+AC_DEFINE(UNDER_SYS_SIGLIST_DECLARED,,[description])
 fi
 ])
 
@@ -204,7 +204,7 @@ exit(msg == 0);
 	 bash_cv_under_sys_siglist=no])])
 AC_MSG_RESULT($bash_cv_under_sys_siglist)
 if test $bash_cv_under_sys_siglist = yes; then
-AC_DEFINE(HAVE_UNDER_SYS_SIGLIST)
+AC_DEFINE(HAVE_UNDER_SYS_SIGLIST,,[description])
 fi
 ])
 
@@ -231,7 +231,7 @@ exit(msg == 0);
 	 bash_cv_sys_siglist=no])])
 AC_MSG_RESULT($bash_cv_sys_siglist)
 if test $bash_cv_sys_siglist = yes; then
-AC_DEFINE(HAVE_SYS_SIGLIST)
+AC_DEFINE(HAVE_SYS_SIGLIST,,[description])
 fi
 ])
 
@@ -260,7 +260,7 @@ AC_CACHE_VAL(bash_cv_sys_errlist,
     bash_cv_sys_errlist=yes, bash_cv_sys_errlist=no)])dnl
 AC_MSG_RESULT($bash_cv_sys_errlist)
 if test $bash_cv_sys_errlist = yes; then
-AC_DEFINE(HAVE_SYS_ERRLIST)
+AC_DEFINE(HAVE_SYS_ERRLIST,,[description])
 fi
 ])
 
@@ -292,7 +292,7 @@ main()
 ])
 AC_MSG_RESULT($bash_cv_dup2_broken)
 if test $bash_cv_dup2_broken = yes; then
-AC_DEFINE(DUP2_BROKEN)
+AC_DEFINE(DUP2_BROKEN,,[description])
 fi
 ])
 
@@ -305,7 +305,7 @@ AC_CACHE_VAL(bash_cv_have_strsignal,
  bash_cv_have_strsignal=yes, bash_cv_have_strsignal=no)])
 AC_MSG_RESULT($bash_cv_have_strsignal)
 if test $bash_cv_have_strsignal = yes; then
-AC_DEFINE(HAVE_STRSIGNAL)
+AC_DEFINE(HAVE_STRSIGNAL,,[description])
 fi
 ])
 
@@ -358,7 +358,7 @@ exit (dir == 0);
 )])
 AC_MSG_RESULT($bash_cv_opendir_not_robust)
 if test $bash_cv_opendir_not_robust = yes; then
-AC_DEFINE(OPENDIR_NOT_ROBUST)
+AC_DEFINE(OPENDIR_NOT_ROBUST,,[description])
 fi
 ])
 
@@ -378,7 +378,7 @@ void (*signal ()) ();],
 [int i;], bash_cv_void_sighandler=yes, bash_cv_void_sighandler=no)])dnl
 AC_MSG_RESULT($bash_cv_void_sighandler)
 if test $bash_cv_void_sighandler = yes; then
-AC_DEFINE(VOID_SIGHANDLER)
+AC_DEFINE(VOID_SIGHANDLER,,[description])
 fi
 ])
 
@@ -479,7 +479,7 @@ long long llm = (long long) -1;
 return ll << i | ll >> i | llm / ll | llm % ll;
 ], bash_cv_type_long_long='long long', bash_cv_type_long_long='long')])
 if test "$bash_cv_type_long_long" = 'long long'; then
-  AC_DEFINE(HAVE_LONG_LONG, 1)
+  AC_DEFINE(HAVE_LONG_LONG, 1, [description])
 fi
 ])
 
@@ -494,7 +494,7 @@ return ull << i | ull >> i | ullmax / ull | ullmax % ull;
 ], bash_cv_type_unsigned_long_long='unsigned long long',
    bash_cv_type_unsigned_long_long='unsigned long')])
 if test "$bash_cv_type_unsigned_long_long" = 'unsigned long long'; then
-  AC_DEFINE(HAVE_UNSIGNED_LONG_LONG, 1)
+  AC_DEFINE(HAVE_UNSIGNED_LONG_LONG, 1, [description])
 fi
 ])
 
@@ -528,9 +528,9 @@ main()
 ])
 AC_MSG_RESULT($bash_cv_type_rlimit)
 if test $bash_cv_type_rlimit = quad_t; then
-AC_DEFINE(RLIMTYPE, quad_t)
+AC_DEFINE(RLIMTYPE, quad_t, [description])
 elif test $bash_cv_type_rlimit = rlim_t; then
-AC_DEFINE(RLIMTYPE, rlim_t)
+AC_DEFINE(RLIMTYPE, rlim_t, [description])
 fi
 ])
 
@@ -556,7 +556,7 @@ AC_CACHE_CHECK([for lstat], bash_cv_func_lstat,
 ],[ lstat(".",(struct stat *)0); ],
 bash_cv_func_lstat=yes, bash_cv_func_lstat=no)])
 if test $bash_cv_func_lstat = yes; then
-  AC_DEFINE(HAVE_LSTAT)
+  AC_DEFINE(HAVE_LSTAT,,[description])
 fi
 ])
 
@@ -570,7 +570,7 @@ AC_CACHE_CHECK([for inet_aton], bash_cv_func_inet_aton,
 struct in_addr ap;], [ inet_aton("127.0.0.1", &ap); ],
 bash_cv_func_inet_aton=yes, bash_cv_func_inet_aton=no)])
 if test $bash_cv_func_inet_aton = yes; then
-  AC_DEFINE(HAVE_INET_ATON)
+  AC_DEFINE(HAVE_INET_ATON,,[description])
 else
   AC_LIBOBJ(inet_aton)
 fi
@@ -616,7 +616,7 @@ exit(s == 0);	/* force optimizer to leave getenv in */
 )])
 AC_MSG_RESULT($bash_cv_getenv_redef)
 if test $bash_cv_getenv_redef = yes; then
-AC_DEFINE(CAN_REDEFINE_GETENV)
+AC_DEFINE(CAN_REDEFINE_GETENV,,[description])
 fi
 ])
 
@@ -646,7 +646,7 @@ extern int putenv ();
 bash_cv_std_putenv=yes, bash_cv_std_putenv=no
 )])
 if test $bash_cv_std_putenv = yes; then
-AC_DEFINE(HAVE_STD_PUTENV)
+AC_DEFINE(HAVE_STD_PUTENV,,[description])
 fi
 ])
 
@@ -676,7 +676,7 @@ extern int unsetenv ();
 bash_cv_std_unsetenv=yes, bash_cv_std_unsetenv=no
 )])
 if test $bash_cv_std_unsetenv = yes; then
-AC_DEFINE(HAVE_STD_UNSETENV)
+AC_DEFINE(HAVE_STD_UNSETENV,,[description])
 fi
 ])
 
@@ -695,7 +695,7 @@ exit (maxfds == -1L);
 )])
 AC_MSG_RESULT($bash_cv_ulimit_maxfds)
 if test $bash_cv_ulimit_maxfds = yes; then
-AC_DEFINE(ULIMIT_MAXFDS)
+AC_DEFINE(ULIMIT_MAXFDS,,[description])
 fi
 ])
 
@@ -720,7 +720,7 @@ main()
 )])
 AC_MSG_RESULT($bash_cv_getcwd_malloc)
 if test $bash_cv_getcwd_malloc = no; then
-AC_DEFINE(GETCWD_BROKEN)
+AC_DEFINE(GETCWD_BROKEN,,[description])
 AC_LIBOBJ(getcwd)
 fi
 ])
@@ -747,7 +747,7 @@ if test "X$_bash_needmsg" = Xyes; then
 fi
 AC_MSG_RESULT($bash_cv_have_gethostbyname)
 if test "$bash_cv_have_gethostbyname" = yes; then
-AC_DEFINE(HAVE_GETHOSTBYNAME)
+AC_DEFINE(HAVE_GETHOSTBYNAME,,[description])
 fi
 ])
 
@@ -771,7 +771,7 @@ main()
 ])
 AC_MSG_RESULT($bash_cv_fnm_extmatch)
 if test $bash_cv_fnm_extmatch = yes; then
-AC_DEFINE(HAVE_LIBC_FNM_EXTMATCH)
+AC_DEFINE(HAVE_LIBC_FNM_EXTMATCH,,[description])
 fi
 ])
 
@@ -822,7 +822,7 @@ exit(1);
 )])
 AC_MSG_RESULT($bash_cv_func_sigsetjmp)
 if test $bash_cv_func_sigsetjmp = present; then
-AC_DEFINE(HAVE_POSIX_SIGSETJMP)
+AC_DEFINE(HAVE_POSIX_SIGSETJMP,,[description])
 fi
 ])
 
@@ -871,7 +871,7 @@ char    *v[];
 )])
 AC_MSG_RESULT($bash_cv_func_strcoll_broken)
 if test $bash_cv_func_strcoll_broken = yes; then
-AC_DEFINE(STRCOLL_BROKEN)
+AC_DEFINE(STRCOLL_BROKEN,,[description])
 fi
 ])
 
@@ -897,13 +897,13 @@ main()
 )])
 AC_MSG_RESULT($bash_cv_printf_a_format)
 if test $bash_cv_printf_a_format = yes; then
-AC_DEFINE(HAVE_PRINTF_A_FORMAT)
+AC_DEFINE(HAVE_PRINTF_A_FORMAT,,[description])
 fi
 ])
 
 AC_DEFUN(BASH_STRUCT_TERMIOS_LDISC,
 [
-AC_CHECK_MEMBER(struct termios.c_line, AC_DEFINE(TERMIOS_LDISC), ,[
+AC_CHECK_MEMBER(struct termios.c_line, AC_DEFINE(TERMIOS_LDISC,,[description]), ,[
 #include <sys/types.h>
 #include <termios.h>
 ])
@@ -911,7 +911,7 @@ AC_CHECK_MEMBER(struct termios.c_line, AC_DEFINE(TERMIOS_LDISC), ,[
 
 AC_DEFUN(BASH_STRUCT_TERMIO_LDISC,
 [
-AC_CHECK_MEMBER(struct termio.c_line, AC_DEFINE(TERMIO_LDISC), ,[
+AC_CHECK_MEMBER(struct termio.c_line, AC_DEFINE(TERMIO_LDISC,,[description]), ,[
 #include <sys/types.h>
 #include <termio.h>
 ])
@@ -944,7 +944,7 @@ return 0;
 ])
 AC_MSG_RESULT($bash_cv_struct_stat_st_blocks)
 if test "$bash_cv_struct_stat_st_blocks" = "yes"; then
-AC_DEFINE(HAVE_STRUCT_STAT_ST_BLOCKS)
+AC_DEFINE(HAVE_STRUCT_STAT_ST_BLOCKS,,[description])
 fi
 ])
 
@@ -1034,8 +1034,8 @@ if test $bash_cv_have_socklib = yes; then
   else
     LIBS="-lsocket $LIBS"
   fi
-  AC_DEFINE(HAVE_LIBSOCKET)
-  AC_DEFINE(HAVE_GETPEERNAME)
+  AC_DEFINE(HAVE_LIBSOCKET,,[description])
+  AC_DEFINE(HAVE_GETPEERNAME,,[description])
 fi
 ])
 
@@ -1068,7 +1068,7 @@ struct dirent d; int z; z = d.d_ino;
 ], bash_cv_dirent_has_dino=yes, bash_cv_dirent_has_dino=no)])
 AC_MSG_RESULT($bash_cv_dirent_has_dino)
 if test $bash_cv_dirent_has_dino = yes; then
-AC_DEFINE(HAVE_STRUCT_DIRENT_D_INO)
+AC_DEFINE(HAVE_STRUCT_DIRENT_D_INO,,[description])
 fi
 ])
 
@@ -1101,7 +1101,7 @@ struct dirent d; int z; z = d.d_fileno;
 ], bash_cv_dirent_has_d_fileno=yes, bash_cv_dirent_has_d_fileno=no)])
 AC_MSG_RESULT($bash_cv_dirent_has_d_fileno)
 if test $bash_cv_dirent_has_d_fileno = yes; then
-AC_DEFINE(HAVE_STRUCT_DIRENT_D_FILENO)
+AC_DEFINE(HAVE_STRUCT_DIRENT_D_FILENO,,[description])
 fi
 ])
 
@@ -1134,7 +1134,7 @@ struct dirent d; int z; z = d.d_namlen;
 ], bash_cv_dirent_has_d_namlen=yes, bash_cv_dirent_has_d_namlen=no)])
 AC_MSG_RESULT($bash_cv_dirent_has_d_namlen)
 if test $bash_cv_dirent_has_d_namlen = yes; then
-AC_DEFINE(HAVE_STRUCT_DIRENT_D_NAMLEN)
+AC_DEFINE(HAVE_STRUCT_DIRENT_D_NAMLEN,,[description])
 fi
 ])
 
@@ -1150,7 +1150,7 @@ AC_EGREP_HEADER(struct timeval, sys/time.h,
 ])
 AC_MSG_RESULT($bash_cv_struct_timeval)
 if test $bash_cv_struct_timeval = yes; then
-  AC_DEFINE(HAVE_TIMEVAL)
+  AC_DEFINE(HAVE_TIMEVAL,,[description])
 fi
 ])
 
@@ -1166,7 +1166,7 @@ AC_EGREP_HEADER(struct timezone, sys/time.h,
 ])
 AC_MSG_RESULT($bash_cv_struct_timezone)
 if test $bash_cv_struct_timezone = yes; then
-  AC_DEFINE(HAVE_STRUCT_TIMEZONE)
+  AC_DEFINE(HAVE_STRUCT_TIMEZONE,,[description])
 fi
 ])
 
@@ -1182,10 +1182,10 @@ AC_CACHE_VAL(bash_cv_struct_winsize_header,
 ])])
 if test $bash_cv_struct_winsize_header = ioctl_h; then
   AC_MSG_RESULT(sys/ioctl.h)
-  AC_DEFINE(STRUCT_WINSIZE_IN_SYS_IOCTL)
+  AC_DEFINE(STRUCT_WINSIZE_IN_SYS_IOCTL,,[description])
 elif test $bash_cv_struct_winsize_header = termios_h; then
   AC_MSG_RESULT(termios.h)
-  AC_DEFINE(STRUCT_WINSIZE_IN_TERMIOS)
+  AC_DEFINE(STRUCT_WINSIZE_IN_TERMIOS,,[description])
 else
   AC_MSG_RESULT(not found)
 fi
@@ -1223,11 +1223,11 @@ AC_CACHE_VAL(bash_cv_signal_vintage,
 ])
 AC_MSG_RESULT($bash_cv_signal_vintage)
 if test "$bash_cv_signal_vintage" = posix; then
-AC_DEFINE(HAVE_POSIX_SIGNALS)
+AC_DEFINE(HAVE_POSIX_SIGNALS,,[description])
 elif test "$bash_cv_signal_vintage" = "4.2bsd"; then
-AC_DEFINE(HAVE_BSD_SIGNALS)
+AC_DEFINE(HAVE_BSD_SIGNALS,,[description])
 elif test "$bash_cv_signal_vintage" = svr3; then
-AC_DEFINE(HAVE_USG_SIGHOLD)
+AC_DEFINE(HAVE_USG_SIGHOLD,,[description])
 fi
 ])
 
@@ -1290,7 +1290,7 @@ main()
 ])
 AC_MSG_RESULT($bash_cv_pgrp_pipe)
 if test $bash_cv_pgrp_pipe = yes; then
-AC_DEFINE(PGRP_PIPE)
+AC_DEFINE(PGRP_PIPE,,[description])
 fi
 ])
 
@@ -1348,7 +1348,7 @@ main()
 )])
 AC_MSG_RESULT($bash_cv_must_reinstall_sighandlers)
 if test $bash_cv_must_reinstall_sighandlers = yes; then
-AC_DEFINE(MUST_REINSTALL_SIGHANDLERS)
+AC_DEFINE(MUST_REINSTALL_SIGHANDLERS,,[description])
 fi
 ])
 
@@ -1406,7 +1406,7 @@ exit(0);
 )])
 AC_MSG_RESULT($bash_cv_job_control_missing)
 if test $bash_cv_job_control_missing = missing; then
-AC_DEFINE(JOB_CONTROL_MISSING)
+AC_DEFINE(JOB_CONTROL_MISSING,,[description])
 fi
 ])
 
@@ -1458,7 +1458,7 @@ exit(0);
 )])
 AC_MSG_RESULT($bash_cv_sys_named_pipes)
 if test $bash_cv_sys_named_pipes = missing; then
-AC_DEFINE(NAMED_PIPES_MISSING)
+AC_DEFINE(NAMED_PIPES_MISSING,,[description])
 fi
 ])
 
@@ -1478,7 +1478,7 @@ AC_CACHE_VAL(bash_cv_mail_dir,
  fi
 ])
 AC_MSG_RESULT($bash_cv_mail_dir)
-AC_DEFINE_UNQUOTED(DEFAULT_MAIL_DIRECTORY, "$bash_cv_mail_dir")
+AC_DEFINE_UNQUOTED(DEFAULT_MAIL_DIRECTORY, "$bash_cv_mail_dir", [description])
 ])
 
 AC_DEFUN(BASH_HAVE_TIOCGWINSZ,
@@ -1489,7 +1489,7 @@ AC_CACHE_VAL(bash_cv_tiocgwinsz_in_ioctl,
   bash_cv_tiocgwinsz_in_ioctl=yes,bash_cv_tiocgwinsz_in_ioctl=no)])
 AC_MSG_RESULT($bash_cv_tiocgwinsz_in_ioctl)
 if test $bash_cv_tiocgwinsz_in_ioctl = yes; then   
-AC_DEFINE(GWINSZ_IN_SYS_IOCTL)
+AC_DEFINE(GWINSZ_IN_SYS_IOCTL,,[description])
 fi
 ])
 
@@ -1501,7 +1501,7 @@ AC_CACHE_VAL(bash_cv_tiocstat_in_ioctl,
   bash_cv_tiocstat_in_ioctl=yes,bash_cv_tiocstat_in_ioctl=no)])
 AC_MSG_RESULT($bash_cv_tiocstat_in_ioctl)
 if test $bash_cv_tiocstat_in_ioctl = yes; then   
-AC_DEFINE(TIOCSTAT_IN_SYS_IOCTL)
+AC_DEFINE(TIOCSTAT_IN_SYS_IOCTL,,[description])
 fi
 ])
 
@@ -1513,7 +1513,7 @@ AC_CACHE_VAL(bash_cv_fionread_in_ioctl,
   bash_cv_fionread_in_ioctl=yes,bash_cv_fionread_in_ioctl=no)])
 AC_MSG_RESULT($bash_cv_fionread_in_ioctl)
 if test $bash_cv_fionread_in_ioctl = yes; then   
-AC_DEFINE(FIONREAD_IN_SYS_IOCTL)
+AC_DEFINE(FIONREAD_IN_SYS_IOCTL,,[description])
 fi
 ])
 
@@ -1530,7 +1530,7 @@ AC_CACHE_VAL(bash_cv_speed_t_in_sys_types,
   bash_cv_speed_t_in_sys_types=yes,bash_cv_speed_t_in_sys_types=no)])
 AC_MSG_RESULT($bash_cv_speed_t_in_sys_types)
 if test $bash_cv_speed_t_in_sys_types = yes; then   
-AC_DEFINE(SPEED_T_IN_SYS_TYPES)
+AC_DEFINE(SPEED_T_IN_SYS_TYPES,,[description])
 fi
 ])
 
@@ -1548,7 +1548,7 @@ AC_CACHE_VAL(bash_cv_getpw_declared,
 bash_cv_getpw_declared=yes,bash_cv_getpw_declared=no)])
 AC_MSG_RESULT($bash_cv_getpw_declared)
 if test $bash_cv_getpw_declared = yes; then
-AC_DEFINE(HAVE_GETPW_DECLS)
+AC_DEFINE(HAVE_GETPW_DECLS,,[description])
 fi
 ])
 
@@ -1574,11 +1574,11 @@ fi
 ])
 AC_MSG_RESULT($bash_cv_dev_fd)
 if test $bash_cv_dev_fd = "standard"; then
-  AC_DEFINE(HAVE_DEV_FD)
-  AC_DEFINE(DEV_FD_PREFIX, "/dev/fd/")
+  AC_DEFINE_UNQUOTED(HAVE_DEV_FD,1,[description])
+  AC_DEFINE(DEV_FD_PREFIX, "/dev/fd/", [description])
 elif test $bash_cv_dev_fd = "whacky"; then
-  AC_DEFINE(HAVE_DEV_FD)
-  AC_DEFINE(DEV_FD_PREFIX, "/proc/self/fd/")
+  AC_DEFINE_UNQUOTED(HAVE_DEV_FD,1,[description])
+  AC_DEFINE(DEV_FD_PREFIX, "/proc/self/fd/", [description])
 fi
 ])
 
@@ -1595,7 +1595,7 @@ AC_CACHE_VAL(bash_cv_dev_stdin,
 ])
 AC_MSG_RESULT($bash_cv_dev_stdin)
 if test $bash_cv_dev_stdin = "present"; then
-  AC_DEFINE(HAVE_DEV_STDIN)
+  AC_DEFINE(HAVE_DEV_STDIN,,[description])
 fi
 ])
 
@@ -1626,7 +1626,7 @@ AC_CACHE_VAL(bash_cv_kernel_rlimit,
 )])
 AC_MSG_RESULT($bash_cv_kernel_rlimit)
 if test $bash_cv_kernel_rlimit = yes; then
-AC_DEFINE(RLIMIT_NEEDS_KERNEL)
+AC_DEFINE(RLIMIT_NEEDS_KERNEL,,[description])
 fi
 ])
 
@@ -1647,7 +1647,7 @@ AC_TRY_COMPILE([
 switch (0) case 0: case (sizeof (off_t) <= 4):;
 ], bash_cv_off_t_64=no, bash_cv_off_t_64=yes))
 if test $bash_cv_off_t_64 = yes; then
-        AC_DEFINE(HAVE_OFF_T_64)
+        AC_DEFINE(HAVE_OFF_T_64,,[description])
 fi])
 
 AC_DEFUN(BASH_CHECK_RTSIGS,
@@ -1677,7 +1677,7 @@ main ()
 )])
 AC_MSG_RESULT($bash_cv_unusable_rtsigs)
 if test $bash_cv_unusable_rtsigs = yes; then
-AC_DEFINE(UNUSABLE_RT_SIGNALS)
+AC_DEFINE(UNUSABLE_RT_SIGNALS,,[description])
 fi
 ])
 
@@ -1692,26 +1692,26 @@ AC_CHECK_HEADERS(wctype.h)
 AC_CHECK_HEADERS(wchar.h)
 AC_CHECK_HEADERS(langinfo.h)
 
-AC_CHECK_FUNC(mbrlen, AC_DEFINE(HAVE_MBRLEN))
-AC_CHECK_FUNC(mbscasecmp, AC_DEFINE(HAVE_MBSCMP))
-AC_CHECK_FUNC(mbscmp, AC_DEFINE(HAVE_MBSCMP))
-AC_CHECK_FUNC(mbsnrtowcs, AC_DEFINE(HAVE_MBSNRTOWCS))
-AC_CHECK_FUNC(mbsrtowcs, AC_DEFINE(HAVE_MBSRTOWCS))
+AC_CHECK_FUNC(mbrlen, AC_DEFINE(HAVE_MBRLEN,,[description]))
+AC_CHECK_FUNC(mbscasecmp, AC_DEFINE(HAVE_MBSCMP,,[description]))
+AC_CHECK_FUNC(mbscmp, AC_DEFINE(HAVE_MBSCMP,,[description]))
+AC_CHECK_FUNC(mbsnrtowcs, AC_DEFINE(HAVE_MBSNRTOWCS,,[description]))
+AC_CHECK_FUNC(mbsrtowcs, AC_DEFINE(HAVE_MBSRTOWCS,,[description]))
 
 AC_REPLACE_FUNCS(mbschr)
 
-AC_CHECK_FUNC(wcrtomb, AC_DEFINE(HAVE_WCRTOMB))
-AC_CHECK_FUNC(wcscoll, AC_DEFINE(HAVE_WCSCOLL))
-AC_CHECK_FUNC(wcsdup, AC_DEFINE(HAVE_WCSDUP))
-AC_CHECK_FUNC(wcwidth, AC_DEFINE(HAVE_WCWIDTH))
-AC_CHECK_FUNC(wctype, AC_DEFINE(HAVE_WCTYPE))
+AC_CHECK_FUNC(wcrtomb, AC_DEFINE(HAVE_WCRTOMB,,[description]))
+AC_CHECK_FUNC(wcscoll, AC_DEFINE(HAVE_WCSCOLL,,[description]))
+AC_CHECK_FUNC(wcsdup, AC_DEFINE(HAVE_WCSDUP,,[description]))
+AC_CHECK_FUNC(wcwidth, AC_DEFINE(HAVE_WCWIDTH,,[description]))
+AC_CHECK_FUNC(wctype, AC_DEFINE(HAVE_WCTYPE,,[description]))
 
 AC_REPLACE_FUNCS(wcswidth)
 
 dnl checks for both mbrtowc and mbstate_t
 AC_FUNC_MBRTOWC
 if test $ac_cv_func_mbrtowc = yes; then
-	AC_DEFINE(HAVE_MBSTATE_T)
+	AC_DEFINE(HAVE_MBSTATE_T,,[description])
 fi
 
 AC_CHECK_FUNCS(iswlower iswupper towlower towupper iswctype)
@@ -1722,7 +1722,7 @@ AC_CACHE_CHECK([for nl_langinfo and CODESET], bash_cv_langinfo_codeset,
 [char* cs = nl_langinfo(CODESET);],
 bash_cv_langinfo_codeset=yes, bash_cv_langinfo_codeset=no)])
 if test $bash_cv_langinfo_codeset = yes; then
-  AC_DEFINE(HAVE_LANGINFO_CODESET)
+  AC_DEFINE(HAVE_LANGINFO_CODESET,,[description])
 fi
 
 dnl check for wchar_t in <wchar.h>
@@ -1957,7 +1957,7 @@ char	*v[];
 )])
 AC_MSG_RESULT($bash_cv_func_ctype_nonascii)
 if test $bash_cv_func_ctype_nonascii = yes; then
-AC_DEFINE(CTYPE_NON_ASCII)
+AC_DEFINE(CTYPE_NON_ASCII,,[description])
 fi
 ])
 
@@ -1990,7 +1990,7 @@ main()
 )])
 AC_MSG_RESULT($bash_cv_wcontinued_broken)
 if test $bash_cv_wcontinued_broken = yes; then
-AC_DEFINE(WCONTINUED_BROKEN)
+AC_DEFINE(WCONTINUED_BROKEN,,[description])
 fi
 ])
 

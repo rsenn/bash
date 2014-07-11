@@ -26,7 +26,7 @@
 #  include <unistd.h>
 #endif
 
-#if HAVE_LANGINFO_CODESET
+#ifdef HAVE_LANGINFO_CODESET
 #  include <langinfo.h>
 #endif
 
@@ -75,7 +75,7 @@ static int locale_isutf8 __P((char *));
 void
 set_default_locale ()
 {
-#if defined (HAVE_SETLOCALE)
+#if defined(HAVE_SETLOCALE) && ENABLE_NLS
   default_locale = setlocale (LC_ALL, "");
   if (default_locale)
     default_locale = savestring (default_locale);
@@ -192,7 +192,7 @@ set_locale_var (var, value)
 	  lc_all = (char *)xmalloc (1);
 	  lc_all[0] = '\0';
 	}
-#if defined (HAVE_SETLOCALE)
+#if defined (HAVE_SETLOCALE) && ENABLE_NLS
       r = *lc_all ? ((x = setlocale (LC_ALL, lc_all)) != 0) : reset_locale_vars ();
       if (x == 0)
 	{
@@ -328,7 +328,7 @@ static int
 reset_locale_vars ()
 {
   char *t;
-#if defined (HAVE_SETLOCALE)
+#if defined (HAVE_SETLOCALE) && ENABLE_NLS
   if (lang == 0 || *lang == '\0')
     maybe_make_export_env ();		/* trust that this will change environment for setlocale */
   if (setlocale (LC_ALL, lang ? lang : "") == 0)
@@ -553,7 +553,7 @@ locale_isutf8 (lspec)
 {
   char *cp;
 
-#if HAVE_LANGINFO_CODESET
+#if defined(HAVE_LANGINFO_CODESET) && defined(CODESET)
   cp = nl_langinfo (CODESET);
   return (STREQ (cp, "UTF-8") || STREQ (cp, "utf8"));
 #else

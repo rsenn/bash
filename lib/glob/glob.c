@@ -172,7 +172,7 @@ glob_pattern_p (pattern)
 #endif
 }
 
-#if EXTENDED_GLOB
+#ifdef EXTENDED_GLOB
 /* Return 1 if all subpatterns in the extended globbing pattern PAT indicate
    that the name should be skipped.  XXX - doesn't handle pattern negation,
    not sure if it should */
@@ -239,7 +239,7 @@ skipname (pat, dname, flags)
      char *dname;
      int flags;
 {
-#if EXTENDED_GLOB
+#ifdef EXTENDED_GLOB
   if (extglob_pattern_p (pat))		/* XXX */
     return (extglob_skipname (pat, dname, flags));
 #endif

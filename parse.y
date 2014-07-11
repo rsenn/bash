@@ -19,7 +19,9 @@
 */
 
 %{
+#include "config-top.h"
 #include "config.h"
+#include "config-bot.h"
 
 #include "bashtypes.h"
 #include "bashansi.h"

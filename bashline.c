@@ -267,7 +267,7 @@ int force_fignore = 1;
 int dircomplete_spelling = 0;
 
 /* Expand directory names during word/filename completion. */
-#if DIRCOMPLETE_EXPAND_DEFAULT
+#ifdef DIRCOMPLETE_EXPAND_DEFAULT
 int dircomplete_expand = 1;
 int dircomplete_expand_relpath = 1;
 #else
