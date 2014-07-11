@@ -23,6 +23,29 @@ export LDFLAGS="--sysroot $SYSROOT -L$NCURSES_LIB_DIR"
 #CPPFLAGS="-I$ANDROID_ARM_TOOLCHAIN/sysroot/usr/include -I$ANDROID_NDK_ROOT/platforms/android-16/arch-arm/usr/include $WFLAGS"
 
 
+bash_cv_printf_declared=yes \
+bash_cv_under_sys_siglist=yes \
+bash_cv_sys_siglist=yes \
+bash_cv_dup2_broken=no \
+bash_cv_opendir_not_robust=no \
+bash_cv_type_rlimit=long \
+bash_cv_getenv_redef=yes \
+bash_cv_ulimit_maxfds=no \
+bash_cv_getcwd_malloc=yes \
+bash_cv_fnm_extmatch=yes \
+bash_cv_func_sigsetjmp=yes \
+bash_cv_func_strcoll_broken=no \
+bash_cv_printf_a_format=no \
+bash_cv_pgrp_pipe=no \
+bash_cv_must_reinstall_sighandlers=no \
+bash_cv_job_control_missing=no \
+bash_cv_sys_named_pipes=yes \
+bash_cv_unusable_rtsigs=yes \
+bash_cv_func_ctype_nonascii=no \
+bash_cv_wcontinued_broken=no \
+bash_cv_func_snprintf=yes \
+bash_cv_func_vsnprintf=yes \
+bash_cv_wexitstatus_offset=0 \
 CPPFLAGS="$CPPFLAGS $WFLAGS" \
 ./configure \
 	--build=`gcc -dumpmachine` \
