@@ -776,7 +776,7 @@ AC_CHECK_FUNCS(bcopy bzero confstr faccessat fnmatch \
 		getaddrinfo gethostbyname getservbyname getservent inet_aton \
 		imaxdiv memmove pathconf putenv raise regcomp regexec \
 		setenv setlinebuf setlocale setvbuf siginterrupt strchr \
-		sysconf syslog tcgetattr times ttyname tzset unsetenv)
+		sysconf syslog tcgetattr times tzset unsetenv)
 
 AC_CHECK_FUNCS(vasprintf asprintf)
 AC_CHECK_FUNCS(isascii isblank isgraph isprint isspace isxdigit)

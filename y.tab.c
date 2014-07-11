@@ -1,4 +1,4 @@
-/* A Bison parser, made by GNU Bison 2.6.4.  */
+/* A Bison parser, made by GNU Bison 2.7.  */
 
 /* Bison implementation for Yacc-like parsers in C
    
@@ -44,7 +44,7 @@
 #define YYBISON 1
 
 /* Bison version.  */
-#define YYBISON_VERSION "2.6.4"
+#define YYBISON_VERSION "2.7"
 
 /* Skeleton name.  */
 #define YYSKELETON_NAME "yacc.c"
@@ -62,7 +62,7 @@
 
 
 /* Copy the first part of user declarations.  */
-/* Line 358 of yacc.c  */
+/* Line 371 of yacc.c  */
 #line 21 "./parse.y"
 
 #include "config-top.h"
@@ -368,7 +368,7 @@ static WORD_DESC *word_desc_to_read;
 static REDIRECTEE source;
 static REDIRECTEE redir;
 
-/* Line 358 of yacc.c  */
+/* Line 371 of yacc.c  */
 #line 373 "y.tab.c"
 
 # ifndef YY_NULL
@@ -508,7 +508,7 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
 {
-/* Line 374 of yacc.c  */
+/* Line 387 of yacc.c  */
 #line 326 "./parse.y"
 
   WORD_DESC *word;		/* the word that we read. */
@@ -520,7 +520,7 @@ typedef union YYSTYPE
   PATTERN_LIST *pattern;
 
 
-/* Line 374 of yacc.c  */
+/* Line 387 of yacc.c  */
 #line 525 "y.tab.c"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
@@ -548,7 +548,7 @@ int yyparse ();
 
 /* Copy the second part of user declarations.  */
 
-/* Line 377 of yacc.c  */
+/* Line 390 of yacc.c  */
 #line 553 "y.tab.c"
 
 #ifdef short
@@ -1361,47 +1361,18 @@ do                                                              \
     }								\
 while (YYID (0))
 
-
+/* Error token number */
 #define YYTERROR	1
 #define YYERRCODE	256
 
-/* YYLLOC_DEFAULT -- Set CURRENT to span from RHS[1] to RHS[N].
-   If N is 0, then set CURRENT to the empty location which ends
-   the previous symbol: RHS[0] (always defined).  */
-
-#ifndef YYLLOC_DEFAULT
-# define YYLLOC_DEFAULT(Current, Rhs, N)                                \
-    do                                                                  \
-      if (YYID (N))                                                     \
-        {                                                               \
-          (Current).first_line   = YYRHSLOC (Rhs, 1).first_line;        \
-          (Current).first_column = YYRHSLOC (Rhs, 1).first_column;      \
-          (Current).last_line    = YYRHSLOC (Rhs, N).last_line;         \
-          (Current).last_column  = YYRHSLOC (Rhs, N).last_column;       \
-        }                                                               \
-      else                                                              \
-        {                                                               \
-          (Current).first_line   = (Current).last_line   =              \
-            YYRHSLOC (Rhs, 0).last_line;                                \
-          (Current).first_column = (Current).last_column =              \
-            YYRHSLOC (Rhs, 0).last_column;                              \
-        }                                                               \
-    while (YYID (0))
-#endif
-
-#define YYRHSLOC(Rhs, K) ((Rhs)[K])
-
-
 
 /* This macro is provided for backward compatibility. */
-
 #ifndef YY_LOCATION_PRINT
 # define YY_LOCATION_PRINT(File, Loc) ((void) 0)
 #endif
 
 
 /* YYLEX -- calling `yylex' with the right arguments.  */
-
 #ifdef YYLEX_PARAM
 # define YYLEX yylex (YYLEX_PARAM)
 #else
@@ -1464,7 +1435,7 @@ yy_symbol_value_print (yyoutput, yytype, yyvaluep)
   switch (yytype)
     {
       default:
-	break;
+        break;
     }
 }
 
@@ -1706,7 +1677,6 @@ yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,
 {
   YYSIZE_T yysize0 = yytnamerr (YY_NULL, yytname[yytoken]);
   YYSIZE_T yysize = yysize0;
-  YYSIZE_T yysize1;
   enum { YYERROR_VERBOSE_ARGS_MAXIMUM = 5 };
   /* Internationalized format string. */
   const char *yyformat = YY_NULL;
@@ -1769,11 +1739,13 @@ yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,
                     break;
                   }
                 yyarg[yycount++] = yytname[yyx];
-                yysize1 = yysize + yytnamerr (YY_NULL, yytname[yyx]);
-                if (! (yysize <= yysize1
-                       && yysize1 <= YYSTACK_ALLOC_MAXIMUM))
-                  return 2;
-                yysize = yysize1;
+                {
+                  YYSIZE_T yysize1 = yysize + yytnamerr (YY_NULL, yytname[yyx]);
+                  if (! (yysize <= yysize1
+                         && yysize1 <= YYSTACK_ALLOC_MAXIMUM))
+                    return 2;
+                  yysize = yysize1;
+                }
               }
         }
     }
@@ -1793,10 +1765,12 @@ yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,
 # undef YYCASE_
     }
 
-  yysize1 = yysize + yystrlen (yyformat);
-  if (! (yysize <= yysize1 && yysize1 <= YYSTACK_ALLOC_MAXIMUM))
-    return 2;
-  yysize = yysize1;
+  {
+    YYSIZE_T yysize1 = yysize + yystrlen (yyformat);
+    if (! (yysize <= yysize1 && yysize1 <= YYSTACK_ALLOC_MAXIMUM))
+      return 2;
+    yysize = yysize1;
+  }
 
   if (*yymsg_alloc < yysize)
     {
@@ -1856,7 +1830,7 @@ yydestruct (yymsg, yytype, yyvaluep)
     {
 
       default:
-	break;
+        break;
     }
 }
 
@@ -1867,16 +1841,16 @@ yydestruct (yymsg, yytype, yyvaluep)
 int yychar;
 
 
-#ifndef YYLVAL_INITIALIZE
-# define YYLVAL_INITIALIZE()
-#endif
 #ifndef YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN
 # define YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN
 # define YY_IGNORE_MAYBE_UNINITIALIZED_END
 #endif
+#ifndef YY_INITIAL_VALUE
+# define YY_INITIAL_VALUE(Value) /* Nothing. */
+#endif
 
 /* The semantic value of the lookahead symbol.  */
-YYSTYPE yylval;
+YYSTYPE yylval YY_INITIAL_VALUE(yyval_default);
 
 /* Number of syntax errors so far.  */
 int yynerrs;
@@ -1952,8 +1926,8 @@ yyparse ()
      Keep to zero when no symbol should be popped.  */
   int yylen = 0;
 
-  yyss = yyssa;
-  yyvs = yyvsa;
+  yyssp = yyss = yyssa;
+  yyvsp = yyvs = yyvsa;
   yystacksize = YYINITDEPTH;
 
   YYDPRINTF ((stderr, "Starting parse\n"));
@@ -1962,15 +1936,6 @@ yyparse ()
   yyerrstatus = 0;
   yynerrs = 0;
   yychar = YYEMPTY; /* Cause a token to be read.  */
-
-  /* Initialize stack pointers.
-     Waste one element of value and location stack
-     so that they stay on the same level as the state stack.
-     The wasted elements are never initialized.  */
-  yyssp = yyss;
-  yyvsp = yyvs;
-
-  YYLVAL_INITIALIZE ();
   goto yysetstate;
 
 /*------------------------------------------------------------.
@@ -2150,7 +2115,7 @@ yyreduce:
   switch (yyn)
     {
         case 2:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 380 "./parse.y"
     {
 			  /* Case of regular command.  Discard the error
@@ -2165,7 +2130,7 @@ yyreduce:
     break;
 
   case 3:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 391 "./parse.y"
     {
 			  /* Case of regular command, but not a very
@@ -2178,7 +2143,7 @@ yyreduce:
     break;
 
   case 4:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 400 "./parse.y"
     {
 			  /* Error during parsing.  Return NULL command. */
@@ -2197,7 +2162,7 @@ yyreduce:
     break;
 
   case 5:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 415 "./parse.y"
     {
 			  /* Case of EOF seen by itself.  Do ignoreeof or
@@ -2209,19 +2174,19 @@ yyreduce:
     break;
 
   case 6:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 425 "./parse.y"
     { (yyval.word_list) = make_word_list ((yyvsp[(1) - (1)].word), (WORD_LIST *)NULL); }
     break;
 
   case 7:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 427 "./parse.y"
     { (yyval.word_list) = make_word_list ((yyvsp[(2) - (2)].word), (yyvsp[(1) - (2)].word_list)); }
     break;
 
   case 8:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 431 "./parse.y"
     {
 			  source.dest = 1;
@@ -2231,7 +2196,7 @@ yyreduce:
     break;
 
   case 9:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 437 "./parse.y"
     {
 			  source.dest = 0;
@@ -2241,7 +2206,7 @@ yyreduce:
     break;
 
   case 10:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 443 "./parse.y"
     {
 			  source.dest = (yyvsp[(1) - (3)].number);
@@ -2251,7 +2216,7 @@ yyreduce:
     break;
 
   case 11:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 449 "./parse.y"
     {
 			  source.dest = (yyvsp[(1) - (3)].number);
@@ -2261,7 +2226,7 @@ yyreduce:
     break;
 
   case 12:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 455 "./parse.y"
     {
 			  source.filename = (yyvsp[(1) - (3)].word);
@@ -2271,7 +2236,7 @@ yyreduce:
     break;
 
   case 13:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 461 "./parse.y"
     {
 			  source.filename = (yyvsp[(1) - (3)].word);
@@ -2281,7 +2246,7 @@ yyreduce:
     break;
 
   case 14:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 467 "./parse.y"
     {
 			  source.dest = 1;
@@ -2291,7 +2256,7 @@ yyreduce:
     break;
 
   case 15:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 473 "./parse.y"
     {
 			  source.dest = (yyvsp[(1) - (3)].number);
@@ -2301,7 +2266,7 @@ yyreduce:
     break;
 
   case 16:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 479 "./parse.y"
     {
 			  source.filename = (yyvsp[(1) - (3)].word);
@@ -2311,7 +2276,7 @@ yyreduce:
     break;
 
   case 17:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 485 "./parse.y"
     {
 			  source.dest = 1;
@@ -2321,7 +2286,7 @@ yyreduce:
     break;
 
   case 18:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 491 "./parse.y"
     {
 			  source.dest = (yyvsp[(1) - (3)].number);
@@ -2331,7 +2296,7 @@ yyreduce:
     break;
 
   case 19:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 497 "./parse.y"
     {
 			  source.filename = (yyvsp[(1) - (3)].word);
@@ -2341,7 +2306,7 @@ yyreduce:
     break;
 
   case 20:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 503 "./parse.y"
     {
 			  source.dest = 0;
@@ -2351,7 +2316,7 @@ yyreduce:
     break;
 
   case 21:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 509 "./parse.y"
     {
 			  source.dest = (yyvsp[(1) - (3)].number);
@@ -2361,7 +2326,7 @@ yyreduce:
     break;
 
   case 22:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 515 "./parse.y"
     {
 			  source.filename = (yyvsp[(1) - (3)].word);
@@ -2371,7 +2336,7 @@ yyreduce:
     break;
 
   case 23:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 521 "./parse.y"
     {
 			  source.dest = 0;
@@ -2382,7 +2347,7 @@ yyreduce:
     break;
 
   case 24:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 528 "./parse.y"
     {
 			  source.dest = (yyvsp[(1) - (3)].number);
@@ -2393,7 +2358,7 @@ yyreduce:
     break;
 
   case 25:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 535 "./parse.y"
     {
 			  source.filename = (yyvsp[(1) - (3)].word);
@@ -2404,7 +2369,7 @@ yyreduce:
     break;
 
   case 26:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 542 "./parse.y"
     {
 			  source.dest = 0;
@@ -2415,7 +2380,7 @@ yyreduce:
     break;
 
   case 27:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 549 "./parse.y"
     {
 			  source.dest = (yyvsp[(1) - (3)].number);
@@ -2426,7 +2391,7 @@ yyreduce:
     break;
 
   case 28:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 556 "./parse.y"
     {
 			  source.filename = (yyvsp[(1) - (3)].word);
@@ -2437,7 +2402,7 @@ yyreduce:
     break;
 
   case 29:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 563 "./parse.y"
     {
 			  source.dest = 0;
@@ -2447,7 +2412,7 @@ yyreduce:
     break;
 
   case 30:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 569 "./parse.y"
     {
 			  source.dest = (yyvsp[(1) - (3)].number);
@@ -2457,7 +2422,7 @@ yyreduce:
     break;
 
   case 31:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 575 "./parse.y"
     {
 			  source.filename = (yyvsp[(1) - (3)].word);
@@ -2467,7 +2432,7 @@ yyreduce:
     break;
 
   case 32:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 581 "./parse.y"
     {
 			  source.dest = 0;
@@ -2477,7 +2442,7 @@ yyreduce:
     break;
 
   case 33:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 587 "./parse.y"
     {
 			  source.dest = (yyvsp[(1) - (3)].number);
@@ -2487,7 +2452,7 @@ yyreduce:
     break;
 
   case 34:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 593 "./parse.y"
     {
 			  source.filename = (yyvsp[(1) - (3)].word);
@@ -2497,7 +2462,7 @@ yyreduce:
     break;
 
   case 35:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 599 "./parse.y"
     {
 			  source.dest = 1;
@@ -2507,7 +2472,7 @@ yyreduce:
     break;
 
   case 36:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 605 "./parse.y"
     {
 			  source.dest = (yyvsp[(1) - (3)].number);
@@ -2517,7 +2482,7 @@ yyreduce:
     break;
 
   case 37:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 611 "./parse.y"
     {
 			  source.filename = (yyvsp[(1) - (3)].word);
@@ -2527,7 +2492,7 @@ yyreduce:
     break;
 
   case 38:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 617 "./parse.y"
     {
 			  source.dest = 0;
@@ -2537,7 +2502,7 @@ yyreduce:
     break;
 
   case 39:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 623 "./parse.y"
     {
 			  source.dest = (yyvsp[(1) - (3)].number);
@@ -2547,7 +2512,7 @@ yyreduce:
     break;
 
   case 40:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 629 "./parse.y"
     {
 			  source.filename = (yyvsp[(1) - (3)].word);
@@ -2557,7 +2522,7 @@ yyreduce:
     break;
 
   case 41:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 635 "./parse.y"
     {
 			  source.dest = 1;
@@ -2567,7 +2532,7 @@ yyreduce:
     break;
 
   case 42:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 641 "./parse.y"
     {
 			  source.dest = (yyvsp[(1) - (3)].number);
@@ -2577,7 +2542,7 @@ yyreduce:
     break;
 
   case 43:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 647 "./parse.y"
     {
 			  source.filename = (yyvsp[(1) - (3)].word);
@@ -2587,7 +2552,7 @@ yyreduce:
     break;
 
   case 44:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 653 "./parse.y"
     {
 			  source.dest = 1;
@@ -2597,7 +2562,7 @@ yyreduce:
     break;
 
   case 45:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 659 "./parse.y"
     {
 			  source.dest = (yyvsp[(1) - (3)].number);
@@ -2607,7 +2572,7 @@ yyreduce:
     break;
 
   case 46:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 665 "./parse.y"
     {
 			  source.filename = (yyvsp[(1) - (3)].word);
@@ -2617,7 +2582,7 @@ yyreduce:
     break;
 
   case 47:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 671 "./parse.y"
     {
 			  source.dest = 0;
@@ -2627,7 +2592,7 @@ yyreduce:
     break;
 
   case 48:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 677 "./parse.y"
     {
 			  source.dest = (yyvsp[(1) - (3)].number);
@@ -2637,7 +2602,7 @@ yyreduce:
     break;
 
   case 49:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 683 "./parse.y"
     {
 			  source.filename = (yyvsp[(1) - (3)].word);
@@ -2647,7 +2612,7 @@ yyreduce:
     break;
 
   case 50:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 689 "./parse.y"
     {
 			  source.dest = 1;
@@ -2657,7 +2622,7 @@ yyreduce:
     break;
 
   case 51:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 695 "./parse.y"
     {
 			  source.dest = 1;
@@ -2667,25 +2632,25 @@ yyreduce:
     break;
 
   case 52:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 703 "./parse.y"
     { (yyval.element).word = (yyvsp[(1) - (1)].word); (yyval.element).redirect = 0; }
     break;
 
   case 53:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 705 "./parse.y"
     { (yyval.element).word = (yyvsp[(1) - (1)].word); (yyval.element).redirect = 0; }
     break;
 
   case 54:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 707 "./parse.y"
     { (yyval.element).redirect = (yyvsp[(1) - (1)].redirect); (yyval.element).word = 0; }
     break;
 
   case 55:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 711 "./parse.y"
     {
 			  (yyval.redirect) = (yyvsp[(1) - (1)].redirect);
@@ -2693,7 +2658,7 @@ yyreduce:
     break;
 
   case 56:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 715 "./parse.y"
     {
 			  register REDIRECT *t;
@@ -2706,31 +2671,31 @@ yyreduce:
     break;
 
   case 57:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 726 "./parse.y"
     { (yyval.command) = make_simple_command ((yyvsp[(1) - (1)].element), (COMMAND *)NULL); }
     break;
 
   case 58:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 728 "./parse.y"
     { (yyval.command) = make_simple_command ((yyvsp[(2) - (2)].element), (yyvsp[(1) - (2)].command)); }
     break;
 
   case 59:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 732 "./parse.y"
     { (yyval.command) = clean_simple_command ((yyvsp[(1) - (1)].command)); }
     break;
 
   case 60:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 734 "./parse.y"
     { (yyval.command) = (yyvsp[(1) - (1)].command); }
     break;
 
   case 61:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 736 "./parse.y"
     {
 			  COMMAND *tc;
@@ -2750,85 +2715,85 @@ yyreduce:
     break;
 
   case 62:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 752 "./parse.y"
     { (yyval.command) = (yyvsp[(1) - (1)].command); }
     break;
 
   case 63:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 754 "./parse.y"
     { (yyval.command) = (yyvsp[(1) - (1)].command); }
     break;
 
   case 64:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 758 "./parse.y"
     { (yyval.command) = (yyvsp[(1) - (1)].command); }
     break;
 
   case 65:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 760 "./parse.y"
     { (yyval.command) = (yyvsp[(1) - (1)].command); }
     break;
 
   case 66:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 762 "./parse.y"
     { (yyval.command) = make_while_command ((yyvsp[(2) - (5)].command), (yyvsp[(4) - (5)].command)); }
     break;
 
   case 67:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 764 "./parse.y"
     { (yyval.command) = make_until_command ((yyvsp[(2) - (5)].command), (yyvsp[(4) - (5)].command)); }
     break;
 
   case 68:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 766 "./parse.y"
     { (yyval.command) = (yyvsp[(1) - (1)].command); }
     break;
 
   case 69:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 768 "./parse.y"
     { (yyval.command) = (yyvsp[(1) - (1)].command); }
     break;
 
   case 70:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 770 "./parse.y"
     { (yyval.command) = (yyvsp[(1) - (1)].command); }
     break;
 
   case 71:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 772 "./parse.y"
     { (yyval.command) = (yyvsp[(1) - (1)].command); }
     break;
 
   case 72:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 774 "./parse.y"
     { (yyval.command) = (yyvsp[(1) - (1)].command); }
     break;
 
   case 73:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 776 "./parse.y"
     { (yyval.command) = (yyvsp[(1) - (1)].command); }
     break;
 
   case 74:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 778 "./parse.y"
     { (yyval.command) = (yyvsp[(1) - (1)].command); }
     break;
 
   case 75:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 782 "./parse.y"
     {
 			  (yyval.command) = make_for_command ((yyvsp[(2) - (6)].word), add_string_to_list ("\"$@\"", (WORD_LIST *)NULL), (yyvsp[(5) - (6)].command), word_lineno[word_top]);
@@ -2837,7 +2802,7 @@ yyreduce:
     break;
 
   case 76:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 787 "./parse.y"
     {
 			  (yyval.command) = make_for_command ((yyvsp[(2) - (6)].word), add_string_to_list ("\"$@\"", (WORD_LIST *)NULL), (yyvsp[(5) - (6)].command), word_lineno[word_top]);
@@ -2846,7 +2811,7 @@ yyreduce:
     break;
 
   case 77:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 792 "./parse.y"
     {
 			  (yyval.command) = make_for_command ((yyvsp[(2) - (7)].word), add_string_to_list ("\"$@\"", (WORD_LIST *)NULL), (yyvsp[(6) - (7)].command), word_lineno[word_top]);
@@ -2855,7 +2820,7 @@ yyreduce:
     break;
 
   case 78:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 797 "./parse.y"
     {
 			  (yyval.command) = make_for_command ((yyvsp[(2) - (7)].word), add_string_to_list ("\"$@\"", (WORD_LIST *)NULL), (yyvsp[(6) - (7)].command), word_lineno[word_top]);
@@ -2864,7 +2829,7 @@ yyreduce:
     break;
 
   case 79:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 802 "./parse.y"
     {
 			  (yyval.command) = make_for_command ((yyvsp[(2) - (10)].word), REVERSE_LIST ((yyvsp[(5) - (10)].word_list), WORD_LIST *), (yyvsp[(9) - (10)].command), word_lineno[word_top]);
@@ -2873,7 +2838,7 @@ yyreduce:
     break;
 
   case 80:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 807 "./parse.y"
     {
 			  (yyval.command) = make_for_command ((yyvsp[(2) - (10)].word), REVERSE_LIST ((yyvsp[(5) - (10)].word_list), WORD_LIST *), (yyvsp[(9) - (10)].command), word_lineno[word_top]);
@@ -2882,7 +2847,7 @@ yyreduce:
     break;
 
   case 81:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 812 "./parse.y"
     {
 			  (yyval.command) = make_for_command ((yyvsp[(2) - (9)].word), (WORD_LIST *)NULL, (yyvsp[(8) - (9)].command), word_lineno[word_top]);
@@ -2891,7 +2856,7 @@ yyreduce:
     break;
 
   case 82:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 817 "./parse.y"
     {
 			  (yyval.command) = make_for_command ((yyvsp[(2) - (9)].word), (WORD_LIST *)NULL, (yyvsp[(8) - (9)].command), word_lineno[word_top]);
@@ -2900,7 +2865,7 @@ yyreduce:
     break;
 
   case 83:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 824 "./parse.y"
     {
 				  (yyval.command) = make_arith_for_command ((yyvsp[(2) - (7)].word_list), (yyvsp[(6) - (7)].command), arith_for_lineno);
@@ -2909,7 +2874,7 @@ yyreduce:
     break;
 
   case 84:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 829 "./parse.y"
     {
 				  (yyval.command) = make_arith_for_command ((yyvsp[(2) - (7)].word_list), (yyvsp[(6) - (7)].command), arith_for_lineno);
@@ -2918,7 +2883,7 @@ yyreduce:
     break;
 
   case 85:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 834 "./parse.y"
     {
 				  (yyval.command) = make_arith_for_command ((yyvsp[(2) - (5)].word_list), (yyvsp[(4) - (5)].command), arith_for_lineno);
@@ -2927,7 +2892,7 @@ yyreduce:
     break;
 
   case 86:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 839 "./parse.y"
     {
 				  (yyval.command) = make_arith_for_command ((yyvsp[(2) - (5)].word_list), (yyvsp[(4) - (5)].command), arith_for_lineno);
@@ -2936,7 +2901,7 @@ yyreduce:
     break;
 
   case 87:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 846 "./parse.y"
     {
 			  (yyval.command) = make_select_command ((yyvsp[(2) - (6)].word), add_string_to_list ("\"$@\"", (WORD_LIST *)NULL), (yyvsp[(5) - (6)].command), word_lineno[word_top]);
@@ -2945,7 +2910,7 @@ yyreduce:
     break;
 
   case 88:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 851 "./parse.y"
     {
 			  (yyval.command) = make_select_command ((yyvsp[(2) - (6)].word), add_string_to_list ("\"$@\"", (WORD_LIST *)NULL), (yyvsp[(5) - (6)].command), word_lineno[word_top]);
@@ -2954,7 +2919,7 @@ yyreduce:
     break;
 
   case 89:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 856 "./parse.y"
     {
 			  (yyval.command) = make_select_command ((yyvsp[(2) - (7)].word), add_string_to_list ("\"$@\"", (WORD_LIST *)NULL), (yyvsp[(6) - (7)].command), word_lineno[word_top]);
@@ -2963,7 +2928,7 @@ yyreduce:
     break;
 
   case 90:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 861 "./parse.y"
     {
 			  (yyval.command) = make_select_command ((yyvsp[(2) - (7)].word), add_string_to_list ("\"$@\"", (WORD_LIST *)NULL), (yyvsp[(6) - (7)].command), word_lineno[word_top]);
@@ -2972,7 +2937,7 @@ yyreduce:
     break;
 
   case 91:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 866 "./parse.y"
     {
 			  (yyval.command) = make_select_command ((yyvsp[(2) - (10)].word), REVERSE_LIST ((yyvsp[(5) - (10)].word_list), WORD_LIST *), (yyvsp[(9) - (10)].command), word_lineno[word_top]);
@@ -2981,7 +2946,7 @@ yyreduce:
     break;
 
   case 92:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 871 "./parse.y"
     {
 			  (yyval.command) = make_select_command ((yyvsp[(2) - (10)].word), REVERSE_LIST ((yyvsp[(5) - (10)].word_list), WORD_LIST *), (yyvsp[(9) - (10)].command), word_lineno[word_top]);
@@ -2990,7 +2955,7 @@ yyreduce:
     break;
 
   case 93:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 878 "./parse.y"
     {
 			  (yyval.command) = make_case_command ((yyvsp[(2) - (6)].word), (PATTERN_LIST *)NULL, word_lineno[word_top]);
@@ -2999,7 +2964,7 @@ yyreduce:
     break;
 
   case 94:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 883 "./parse.y"
     {
 			  (yyval.command) = make_case_command ((yyvsp[(2) - (7)].word), (yyvsp[(5) - (7)].pattern), word_lineno[word_top]);
@@ -3008,7 +2973,7 @@ yyreduce:
     break;
 
   case 95:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 888 "./parse.y"
     {
 			  (yyval.command) = make_case_command ((yyvsp[(2) - (6)].word), (yyvsp[(5) - (6)].pattern), word_lineno[word_top]);
@@ -3017,31 +2982,31 @@ yyreduce:
     break;
 
   case 96:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 895 "./parse.y"
     { (yyval.command) = make_function_def ((yyvsp[(1) - (5)].word), (yyvsp[(5) - (5)].command), function_dstart, function_bstart); }
     break;
 
   case 97:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 898 "./parse.y"
     { (yyval.command) = make_function_def ((yyvsp[(2) - (6)].word), (yyvsp[(6) - (6)].command), function_dstart, function_bstart); }
     break;
 
   case 98:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 901 "./parse.y"
     { (yyval.command) = make_function_def ((yyvsp[(2) - (4)].word), (yyvsp[(4) - (4)].command), function_dstart, function_bstart); }
     break;
 
   case 99:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 905 "./parse.y"
     { (yyval.command) = (yyvsp[(1) - (1)].command); }
     break;
 
   case 100:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 907 "./parse.y"
     {
 			  COMMAND *tc;
@@ -3074,7 +3039,7 @@ yyreduce:
     break;
 
   case 101:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 938 "./parse.y"
     {
 			  (yyval.command) = make_subshell_command ((yyvsp[(2) - (3)].command));
@@ -3083,7 +3048,7 @@ yyreduce:
     break;
 
   case 102:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 945 "./parse.y"
     {
 			  (yyval.command) = make_coproc_command ("COPROC", (yyvsp[(2) - (2)].command));
@@ -3092,7 +3057,7 @@ yyreduce:
     break;
 
   case 103:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 950 "./parse.y"
     {
 			  COMMAND *tc;
@@ -3113,7 +3078,7 @@ yyreduce:
     break;
 
   case 104:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 967 "./parse.y"
     {
 			  (yyval.command) = make_coproc_command ((yyvsp[(2) - (3)].word)->word, (yyvsp[(3) - (3)].command));
@@ -3122,7 +3087,7 @@ yyreduce:
     break;
 
   case 105:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 972 "./parse.y"
     {
 			  COMMAND *tc;
@@ -3143,7 +3108,7 @@ yyreduce:
     break;
 
   case 106:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 989 "./parse.y"
     {
 			  (yyval.command) = make_coproc_command ("COPROC", clean_simple_command ((yyvsp[(2) - (2)].command)));
@@ -3152,139 +3117,139 @@ yyreduce:
     break;
 
   case 107:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 996 "./parse.y"
     { (yyval.command) = make_if_command ((yyvsp[(2) - (5)].command), (yyvsp[(4) - (5)].command), (COMMAND *)NULL); }
     break;
 
   case 108:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 998 "./parse.y"
     { (yyval.command) = make_if_command ((yyvsp[(2) - (7)].command), (yyvsp[(4) - (7)].command), (yyvsp[(6) - (7)].command)); }
     break;
 
   case 109:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1000 "./parse.y"
     { (yyval.command) = make_if_command ((yyvsp[(2) - (6)].command), (yyvsp[(4) - (6)].command), (yyvsp[(5) - (6)].command)); }
     break;
 
   case 110:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1005 "./parse.y"
     { (yyval.command) = make_group_command ((yyvsp[(2) - (3)].command)); }
     break;
 
   case 111:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1009 "./parse.y"
     { (yyval.command) = make_arith_command ((yyvsp[(1) - (1)].word_list)); }
     break;
 
   case 112:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1013 "./parse.y"
     { (yyval.command) = (yyvsp[(2) - (3)].command); }
     break;
 
   case 113:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1017 "./parse.y"
     { (yyval.command) = make_if_command ((yyvsp[(2) - (4)].command), (yyvsp[(4) - (4)].command), (COMMAND *)NULL); }
     break;
 
   case 114:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1019 "./parse.y"
     { (yyval.command) = make_if_command ((yyvsp[(2) - (6)].command), (yyvsp[(4) - (6)].command), (yyvsp[(6) - (6)].command)); }
     break;
 
   case 115:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1021 "./parse.y"
     { (yyval.command) = make_if_command ((yyvsp[(2) - (5)].command), (yyvsp[(4) - (5)].command), (yyvsp[(5) - (5)].command)); }
     break;
 
   case 117:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1026 "./parse.y"
     { (yyvsp[(2) - (2)].pattern)->next = (yyvsp[(1) - (2)].pattern); (yyval.pattern) = (yyvsp[(2) - (2)].pattern); }
     break;
 
   case 118:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1030 "./parse.y"
     { (yyval.pattern) = make_pattern_list ((yyvsp[(2) - (4)].word_list), (yyvsp[(4) - (4)].command)); }
     break;
 
   case 119:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1032 "./parse.y"
     { (yyval.pattern) = make_pattern_list ((yyvsp[(2) - (4)].word_list), (COMMAND *)NULL); }
     break;
 
   case 120:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1034 "./parse.y"
     { (yyval.pattern) = make_pattern_list ((yyvsp[(3) - (5)].word_list), (yyvsp[(5) - (5)].command)); }
     break;
 
   case 121:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1036 "./parse.y"
     { (yyval.pattern) = make_pattern_list ((yyvsp[(3) - (5)].word_list), (COMMAND *)NULL); }
     break;
 
   case 122:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1040 "./parse.y"
     { (yyval.pattern) = (yyvsp[(1) - (2)].pattern); }
     break;
 
   case 123:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1042 "./parse.y"
     { (yyvsp[(2) - (3)].pattern)->next = (yyvsp[(1) - (3)].pattern); (yyval.pattern) = (yyvsp[(2) - (3)].pattern); }
     break;
 
   case 124:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1044 "./parse.y"
     { (yyvsp[(1) - (2)].pattern)->flags |= CASEPAT_FALLTHROUGH; (yyval.pattern) = (yyvsp[(1) - (2)].pattern); }
     break;
 
   case 125:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1046 "./parse.y"
     { (yyvsp[(2) - (3)].pattern)->flags |= CASEPAT_FALLTHROUGH; (yyvsp[(2) - (3)].pattern)->next = (yyvsp[(1) - (3)].pattern); (yyval.pattern) = (yyvsp[(2) - (3)].pattern); }
     break;
 
   case 126:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1048 "./parse.y"
     { (yyvsp[(1) - (2)].pattern)->flags |= CASEPAT_TESTNEXT; (yyval.pattern) = (yyvsp[(1) - (2)].pattern); }
     break;
 
   case 127:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1050 "./parse.y"
     { (yyvsp[(2) - (3)].pattern)->flags |= CASEPAT_TESTNEXT; (yyvsp[(2) - (3)].pattern)->next = (yyvsp[(1) - (3)].pattern); (yyval.pattern) = (yyvsp[(2) - (3)].pattern); }
     break;
 
   case 128:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1054 "./parse.y"
     { (yyval.word_list) = make_word_list ((yyvsp[(1) - (1)].word), (WORD_LIST *)NULL); }
     break;
 
   case 129:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1056 "./parse.y"
     { (yyval.word_list) = make_word_list ((yyvsp[(3) - (3)].word), (yyvsp[(1) - (3)].word_list)); }
     break;
 
   case 130:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1065 "./parse.y"
     {
 			  (yyval.command) = (yyvsp[(2) - (2)].command);
@@ -3294,7 +3259,7 @@ yyreduce:
     break;
 
   case 132:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1074 "./parse.y"
     {
 			  (yyval.command) = (yyvsp[(2) - (2)].command);
@@ -3302,7 +3267,7 @@ yyreduce:
     break;
 
   case 134:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1081 "./parse.y"
     {
 			  if ((yyvsp[(1) - (3)].command)->type == cm_connection)
@@ -3313,19 +3278,19 @@ yyreduce:
     break;
 
   case 136:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1092 "./parse.y"
     { (yyval.command) = command_connect ((yyvsp[(1) - (4)].command), (yyvsp[(4) - (4)].command), AND_AND); }
     break;
 
   case 137:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1094 "./parse.y"
     { (yyval.command) = command_connect ((yyvsp[(1) - (4)].command), (yyvsp[(4) - (4)].command), OR_OR); }
     break;
 
   case 138:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1096 "./parse.y"
     {
 			  if ((yyvsp[(1) - (4)].command)->type == cm_connection)
@@ -3336,43 +3301,43 @@ yyreduce:
     break;
 
   case 139:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1103 "./parse.y"
     { (yyval.command) = command_connect ((yyvsp[(1) - (4)].command), (yyvsp[(4) - (4)].command), ';'); }
     break;
 
   case 140:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1105 "./parse.y"
     { (yyval.command) = command_connect ((yyvsp[(1) - (4)].command), (yyvsp[(4) - (4)].command), ';'); }
     break;
 
   case 141:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1107 "./parse.y"
     { (yyval.command) = (yyvsp[(1) - (1)].command); }
     break;
 
   case 144:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1115 "./parse.y"
     { (yyval.number) = '\n'; }
     break;
 
   case 145:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1117 "./parse.y"
     { (yyval.number) = ';'; }
     break;
 
   case 146:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1119 "./parse.y"
     { (yyval.number) = yacc_EOF; }
     break;
 
   case 149:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1133 "./parse.y"
     {
 			  (yyval.command) = (yyvsp[(1) - (1)].command);
@@ -3389,7 +3354,7 @@ yyreduce:
     break;
 
   case 150:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1146 "./parse.y"
     {
 			  if ((yyvsp[(1) - (2)].command)->type == cm_connection)
@@ -3409,7 +3374,7 @@ yyreduce:
     break;
 
   case 151:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1162 "./parse.y"
     {
 			  (yyval.command) = (yyvsp[(1) - (2)].command);
@@ -3426,19 +3391,19 @@ yyreduce:
     break;
 
   case 152:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1177 "./parse.y"
     { (yyval.command) = command_connect ((yyvsp[(1) - (4)].command), (yyvsp[(4) - (4)].command), AND_AND); }
     break;
 
   case 153:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1179 "./parse.y"
     { (yyval.command) = command_connect ((yyvsp[(1) - (4)].command), (yyvsp[(4) - (4)].command), OR_OR); }
     break;
 
   case 154:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1181 "./parse.y"
     {
 			  if ((yyvsp[(1) - (3)].command)->type == cm_connection)
@@ -3449,25 +3414,25 @@ yyreduce:
     break;
 
   case 155:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1188 "./parse.y"
     { (yyval.command) = command_connect ((yyvsp[(1) - (3)].command), (yyvsp[(3) - (3)].command), ';'); }
     break;
 
   case 156:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1191 "./parse.y"
     { (yyval.command) = (yyvsp[(1) - (1)].command); }
     break;
 
   case 157:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1195 "./parse.y"
     { (yyval.command) = (yyvsp[(1) - (1)].command); }
     break;
 
   case 158:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1197 "./parse.y"
     {
 			  if ((yyvsp[(2) - (2)].command))
@@ -3477,7 +3442,7 @@ yyreduce:
     break;
 
   case 159:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1203 "./parse.y"
     {
 			  if ((yyvsp[(2) - (2)].command))
@@ -3487,7 +3452,7 @@ yyreduce:
     break;
 
   case 160:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1209 "./parse.y"
     {
 			  ELEMENT x;
@@ -3508,7 +3473,7 @@ yyreduce:
     break;
 
   case 161:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1226 "./parse.y"
     {
 			  ELEMENT x;
@@ -3530,13 +3495,13 @@ yyreduce:
     break;
 
   case 162:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1246 "./parse.y"
     { (yyval.command) = command_connect ((yyvsp[(1) - (4)].command), (yyvsp[(4) - (4)].command), '|'); }
     break;
 
   case 163:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1248 "./parse.y"
     {
 			  /* Make cmd1 |& cmd2 equivalent to cmd1 2>&1 | cmd2 */
@@ -3563,32 +3528,32 @@ yyreduce:
     break;
 
   case 164:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1271 "./parse.y"
     { (yyval.command) = (yyvsp[(1) - (1)].command); }
     break;
 
   case 165:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1275 "./parse.y"
     { (yyval.number) = CMD_TIME_PIPELINE; }
     break;
 
   case 166:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1277 "./parse.y"
     { (yyval.number) = CMD_TIME_PIPELINE|CMD_TIME_POSIX; }
     break;
 
   case 167:
-/* Line 1813 of yacc.c  */
+/* Line 1792 of yacc.c  */
 #line 1279 "./parse.y"
     { (yyval.number) = CMD_TIME_PIPELINE|CMD_TIME_POSIX; }
     break;
 
 
-/* Line 1813 of yacc.c  */
-#line 3592 "y.tab.c"
+/* Line 1792 of yacc.c  */
+#line 3557 "y.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -3819,7 +3784,7 @@ yyreturn:
 }
 
 
-/* Line 2076 of yacc.c  */
+/* Line 2055 of yacc.c  */
 #line 1281 "./parse.y"
 
 
