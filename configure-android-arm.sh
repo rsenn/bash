@@ -77,4 +77,5 @@ CPPFLAGS="$CPPFLAGS $WFLAGS" \
   --without-bash-malloc \
   --disable-strict-posix-default \
   --disable-static-link \
+	--enable-progcomp \
   "$@"
