@@ -49,4 +49,8 @@ CPPFLAGS="$CPPFLAGS $WFLAGS" \
   --with-curses \
   --disable-debugger \
   --disable-disabled-builtins \
-  --disable-multibyte
+  --disable-multibyte \
+  --without-bash-malloc \
+  --enable-strict-posix-default \
+  --enable-static-link \
+  "$@"
