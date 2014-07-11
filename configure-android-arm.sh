@@ -46,12 +46,12 @@ CPPFLAGS="$CPPFLAGS $WFLAGS" \
   --disable-progcomp \
   --enable-prompt-string-decoding \
   --enable-readline \
-  --disable-select \
+  --enable-select \
   --with-curses \
   --disable-debugger \
-  --disable-disabled-builtins \
+  --enable-disabled-builtins \
   --disable-multibyte \
   --without-bash-malloc \
   --disable-strict-posix-default \
-  --enable-static-link \
+  --disable-static-link \
   "$@"
